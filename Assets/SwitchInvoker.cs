@@ -4,49 +4,61 @@ using UnityEngine;
 
 public class SwitchInvoker : MonoBehaviour {
 
+    public GameObject _disabledObject;
+
     private Vector3 _initialPos;
     private bool _pressed = false;
+    private GameObject _switchObject;
 
 	// Use this for initialization
 	void Start () {
         _initialPos = transform.position;
+        _switchObject = transform.parent.gameObject;
 	}
-	
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ENTER");
+        if(other.gameObject.tag != "Player")
+        {
+            return;
+        }
+
         if (_pressed)
         {
             return;
         }
-        
+
         _pressed = true;
         moveSwitch();
-        collision.gameObject.transform.parent = transform;
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        Debug.Log("EXIT");
-
         if (_pressed)
         {
             _pressed = false;
             moveSwitch();
-            collision.gameObject.transform.parent = null;
+        }
+    }
+    
+    private void moveSwitch()
+    {
+        float newZ = _pressed ? _initialPos.z + 0.4f : _initialPos.z;
+
+        iTween.Stop(_switchObject);
+
+        iTween.MoveTo(_switchObject, iTween.Hash("z", newZ,
+                                                  "time", 0.1f,
+                                                  "easeType", iTween.EaseType.linear));
+
+        if (_pressed)
+        {
+            onPressed();
         }
     }
 
-    private void moveSwitch()
+    private void onPressed()
     {
-        Debug.Log("MOVING");
-        float newZ = _pressed ? _initialPos.z + 0.3f : _initialPos.z;
-
-        iTween.Stop(gameObject);
-
-        iTween.MoveTo(gameObject,
-            iTween.Hash("z", newZ,
-                        "time", 0.1f,
-                        "easeType", iTween.EaseType.linear));
+        _disabledObject.SetActive(true);
     }
 }
