@@ -11,7 +11,8 @@ public class PlayerMovement : MonoBehaviour
 	private bool _isGrounded = false;
     private Rigidbody _rigidbody;
     private Animator _animator;
-    
+    private bool _infiniteJumps = false;
+
     private enum Direction
     {
         Left = 0,
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxis("Vertical");
         movement *= movementSpeed * Time.deltaTime;
 
-        bool jump = _isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0));
+        bool jump = (_infiniteJumps || _isGrounded) && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0));
         movement.z = jump ? -jumpSpeed : _rigidbody.velocity.z;
         
         if(CheckCollision(new Vector3(movement.x, 0.0f, 0.0f)))
@@ -134,5 +135,10 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Center: " + c.center.ToString());
         Gizmos.DrawCube(transform.position + c.center, new Vector3(0.1f, 0.1f, 0.1f));
         */
+    }
+
+    public void SetInfiniteJumps(bool infiniteJumps)
+    {
+        _infiniteJumps = infiniteJumps;
     }
 }

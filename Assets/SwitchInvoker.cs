@@ -59,6 +59,9 @@ public class SwitchInvoker : MonoBehaviour {
 
     private void onPressed()
     {
-        _disabledObject.SetActive(true);
+        foreach (MonoBehaviour script in _disabledObject.GetComponents<MonoBehaviour>())
+        {
+            script.enabled = true;
+        }
     }
 }

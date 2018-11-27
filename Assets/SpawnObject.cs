@@ -20,6 +20,7 @@ public class SpawnObject : MonoBehaviour {
 
         if(previousSpawned != null)
         {
+            previousSpawned.transform.position = Vector3.zero;
             Object.Destroy(previousSpawned);
         }
 
@@ -27,6 +28,6 @@ public class SpawnObject : MonoBehaviour {
         instance.transform.position = transform.position;
         instance.name = spawnedName;
 
-        gameObject.SetActive(false);
+        enabled = false;
 	}
 }

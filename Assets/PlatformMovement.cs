@@ -23,6 +23,7 @@ public class PlatformMovement : MonoBehaviour {
     private int _currentDirectionIdx = 0;
     private bool _reversing = false;
     private Vector3 _lastPos = Vector3.zero;
+    
 
     // Use this for initialization
     void Start () {

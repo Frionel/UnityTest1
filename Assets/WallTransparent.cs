@@ -6,7 +6,7 @@ public class WallTransparent : MonoBehaviour {
 
     private GameObject _playerObj;
     private Renderer _renderer;
-    public float _opacityPercent = 0.5f;
+    public float _opacityPercent = 0.75f;
 
 	// Use this for initialization
 	void Start () {

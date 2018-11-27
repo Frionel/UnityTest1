@@ -62,12 +62,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CameraMovement.cs" />
+    <Compile Include="Assets\DoorOpen.cs" />
+    <Compile Include="Assets\OnActivate.cs" />
+    <Compile Include="Assets\OnEnterGameObject.cs" />
     <Compile Include="Assets\PlatformMovement.cs" />
     <Compile Include="Assets\PlayerMovement.cs" />
     <Compile Include="Assets\ShadowMovement.cs" />
     <Compile Include="Assets\SpawnObject.cs" />
     <Compile Include="Assets\SwitchInvoker.cs" />
     <Compile Include="Assets\WallTransparent.cs" />
+    <Compile Include="Assets\WaterPhysics.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Repos/UnityTest1/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
