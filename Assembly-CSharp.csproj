@@ -70,6 +70,7 @@
     <Compile Include="Assets\ShadowMovement.cs" />
     <Compile Include="Assets\SpawnObject.cs" />
     <Compile Include="Assets\SwitchInvoker.cs" />
+    <Compile Include="Assets\TriggerCameraChange.cs" />
     <Compile Include="Assets\WallTransparent.cs" />
     <Compile Include="Assets\WaterPhysics.cs" />
     <Reference Include="UnityEditor.StandardEvents">
