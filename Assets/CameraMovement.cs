@@ -28,12 +28,11 @@ public class CameraMovement : MonoBehaviour {
 
         _defaultConfig = new CameraConfig(transform.position - _playerObj.transform.position, transform.rotation);
 
-        Vector3 lateralPosition = new Vector3(30.0f, 0.0f, 0.0f);
+        Vector3 lateralPosition = new Vector3(30.0f, 0.0f, -5.40f);
         Quaternion lateralRotation = Quaternion.Euler(0.0f, -90.0f, 90.0f);
         _lateralConfig = new CameraConfig(lateralPosition - _playerObj.transform.position, lateralRotation);
 
         _activeCameraConfig = _defaultConfig;
-
     }
 	
 	// Update is called once per frame

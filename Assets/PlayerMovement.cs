@@ -75,7 +75,17 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hitInfo;
         bool hit = _rigidbody.SweepTest(movement, out hitInfo, distance);
 
-        return hit && hitInfo.transform.gameObject.tag != "Movable";
+        if(!hit)
+        {
+            return false;
+        }
+
+        GameObject hittedObj = hitInfo.transform.gameObject;
+        Collider hittedCollider = hittedObj.GetComponent<Collider>();
+        bool hasCollider = hittedCollider != null && !hittedCollider.isTrigger;
+        bool isMovable = hittedObj.tag == "Movable";
+        
+        return hasCollider && !isMovable;
     }
 
     void UpdateAnimator()
